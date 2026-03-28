@@ -1,47 +1,39 @@
-# TexHub 2.0 - Backend
+# TexHub - Backend
 
-The core API and real-time communication server for the TexHub platform. Built on Node.js and Express, it provides secure endpoints for user management, order processing, with real-time updates via Socket.io.
+A RESTful API for the TexHub tailoring house management platform, built using Node.js and Express.
 
 ## 🚀 Features
 
-- **Authentication**: JWT-based security with role-based access control (Admin, Tailor, Customer).
-- **Database**: [Sequelize ORM](https://sequelize.org/) with PostgreSQL integration.
-- **File Uploads**: [Multer](https://github.com/expressjs/multer) for managing order designs & user avatars.
-- **Real-time**: [Socket.io](https://socket.io/) for chat and instant order notifications.
-- **Security**: [Helmet](https://helmetjs.github.io/), CORS, and rate limiting (Express-rate-limit).
-- **Validation**: [Joi](https://joi.dev/) for robust request payload validation.
-- **Emailing**: [Nodemailer](https://nodemailer.com/) for automated system notifications.
+- **Authentication**: JWT-based security with bcrypt.
+- **Database**: PostgreSQL handled via Sequelize ORM.
+- **Real-time**: Socket.io for chat and notifications.
+- **File Uploads**: Admin and tailor file uploads (Multer).
+- **Security**: CORS, Helmet, and rate limiting.
+- **Validation**: Joi schemas for request validation.
 
 ## 🛠️ Tech Stack
 
-- **Platform**: [Node.js](https://nodejs.org/) v18+
-- **Framework**: [Express.js](https://expressjs.com/) v5+
-- **ORM**: [Sequelize](https://sequelize.org/)
+- **Framework**: [Express.js](https://expressjs.com/)
+- **Environment**: [Node.js](https://nodejs.org/)
 - **Database**: [PostgreSQL](https://www.postgresql.org/)
-- **Networking**: [Socket.io](https://socket.io/)
-- **Authentication**: JSON Web Tokens (JWT) & bcryptjs
+- **ORM**: [Sequelize](https://sequelize.org/)
+- **Real-time**: [Socket.io](https://socket.io/)
 
 ## 📦 Getting Started
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/)
-- [PostgreSQL](https://www.postgresql.org/) (Running instances)
-- [npm](https://www.npmjs.com/)
+
+- [Node.js](https://nodejs.org/) (v16.x or later)
+- [PostgreSQL](https://www.postgresql.org/) (Installed and running)
 
 ### Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/SritharanSri/TexHub2.0_Backend.git
-   cd TexHub2.0_Backend
-   ```
-
-2. Install dependencies:
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-3. Setup Environment Variables:
+2. Setup Environment Variables:
    Create a `.env` file in the root directory:
    ```env
    PORT=5000
@@ -52,16 +44,19 @@ The core API and real-time communication server for the TexHub platform. Built o
    JWT_SECRET=your_secret_key
    ```
 
-4. Initialize the database:
+3. Initialize the database:
    ```bash
-   npx sequelize-cli db:migrate
-   npx sequelize-cli db:seed:all
+   npm run db:migrate
+   npm run db:seed
    ```
 
-5. Start the development server:
-   ```bash
-   npm run dev
-   ```
+### Scripts
+
+- `npm start`: Start the production server.
+- `npm run dev`: Start the production server with nodemon.
+- `npm run db:migrate`: Run database migrations.
+- `npm run db:seed`: Seed the database with initial data.
+- `npm run db:reset`: Undo all migrations, migrate again, and re-seed.
 
 ## 📄 License
-This project is for demonstration/internal purposes. All rights reserved.
+MIT
